@@ -16,8 +16,8 @@ class Post extends Model
     /**
      * Get the author of the post.
      */
-    public function user()
+    public function author()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 }

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +51,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $post = Post::findOrFail($post->id);
+        // dd($post);
+        return view('posts.show', compact('post'));
     }
 
     /**
