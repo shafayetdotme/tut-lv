@@ -22,7 +22,7 @@
 
             <p class="mt-3">
                 @foreach ($post->tags as $tag)
-                    <a href="/posts/?tags={{ $tag->name }}"><span class="badge badge-primary">{{ $tag->name }}</span></a>
+                    <a href="{{ route('posts.index', ['tags' => $tag->name]) }}"><span class="badge badge-primary">{{ $tag->name }}</span></a>
                 @endforeach
             </p>
             
