@@ -2,9 +2,14 @@
 
 @section('content')
     <div class="container">
-        <h1 class="font-weight-lighter">POSTS</h1>
+        @if (Request::get('tags'))
+            <h1 class="font-weight-lighter">POST : {{ Request::get('tags') }}</h1>
+        @else
+            <h1 class="font-weight-lighter">POSTS</h1>
+        @endif
+        
         <div class="row">
-            @foreach ($posts as $post)
+            @forelse($posts as $post)
                 
                 <div class="col-md-6">
                     <div class="card mb-3">
@@ -28,8 +33,11 @@
                         </div>
                     </div>
                 </div>
+            @empty
+
+                <p>No Post found</p>
             
-            @endforeach
+            @endforelse
         </div>
         <div class="row">
             {{ $posts->Links() }}
